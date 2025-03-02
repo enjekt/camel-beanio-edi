@@ -1,0 +1,59 @@
+<beanio xmlns="http://www.beanio.org/2012/03" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.beanio.org/2012/03 http://www.beanio.org/2012/03/mapping.xsd">
+
+  <stream name="ediStream" format="csv" >
+ 	<parser>
+      <property name="delimiter" value="*" />
+    </parser>
+    <group name="purchaseOrder" class="org.edi.sample.models.PurchaseOrder"  >
+      <record name="recordType" maxOccurs="1" class="org.edi.sample.models.ISARecord">
+		  <field name="recordType"  literal="ISA" rid="false"/>
+		   <field name="ignore" ignore="true" />
+		   <field name="ignore" ignore="true" />
+		   <field name="ignore" ignore="true" />
+		   <field name="ignore" ignore="true" />
+		   <field name="ignore" ignore="true" />
+		   <field name="sender" trim="true"/>
+		   <field name="ignore" ignore="true" />
+		   <field name="receiver" trim="true"/>
+		   <field name="date" format="ddMMyy" />
+		   <field name="time"/>
+	  </record>
+ 	  <record name="functionalGroup" maxOccurs="1" class="org.edi.sample.models.FunctionalGroup">
+		    <field name="recordType" rid="false" literal="GS"/>
+	   </record> 
+ 	  
+      <record name="transactionSet" maxOccurs="1" class="org.edi.sample.models.TransactionSet">
+      	<field name="recordType" rid="false" literal="ST" />
+      </record>
+ 
+  
+ 	  <record name="beginChangeSet" maxOccurs="1" class="org.edi.sample.models.BeginChangeSet" >
+ 	  	<field name="recordType"  literal="BEG" rid="false"/>
+ 	  </record>
+	  
+ 	  <record name="reference" class="org.edi.sample.models.Reference" collection="list" minOccurs="0" maxOccurs="2" >
+ 	  		<field name="recordType"  literal="REF" rid="false" ignore="false" />
+ 	  </record>
+ 	  
+ 	  <record name="lineItem" class="org.edi.sample.models.LineItem" collection="list" minOccurs="0" maxOccurs="unbounded" >
+        <field name="recordType" rid="false" literal="PO1"  ignore="false" />
+        <field name="itemNumber" />
+        <field name="quantity" />
+        <field name="price" />
+        <field name="description" />
+
+      </record>
+ 	  <!--
+ 	  <record name="transactionTotals" rid="false" literal="CTT" />
+ 	  <record name="transactionSetEnd" rid="false" literal="SE" />
+ 	  <record name="functionGroupEnd" rid="false" literal="GE" />
+ 	  <record name="interchangeControl" rid="false" literal="IEA" />
+-->
+    </group>
+  </stream>
+  
+ 
+    
+</beanio>
