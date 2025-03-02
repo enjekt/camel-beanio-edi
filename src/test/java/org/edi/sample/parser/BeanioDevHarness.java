@@ -7,7 +7,11 @@ import java.io.Reader;
 import org.beanio.BeanReader;
 import org.beanio.StreamFactory;
 
-public class BeanioParserTest {
+/**
+ * 
+ * An easy development harness for iterative development of edi parsing deffintiions in  Beanio. 
+ */
+public class BeanioDevHarness {
 
 	    public static void main(String[] args) throws Exception {
 	    	StreamFactory factory = StreamFactory.newInstance();
