@@ -7,7 +7,7 @@ Sample parsing beanio in Camel with testing.
 
 1. Use the BeanioDevHarness to iteratively improve the definition of bean parsing in relation to some sample data. 
 2. Initial development for a multiline record is to (a) create a bean for a given tag, enter it into the definition, and take in the tag.
-3. Use the setting to ignore unrecognized records and fields so that a complete set of definitions is no required up front.
+3. Use the setting to ignore unrecognized records and fields so that a complete set of definitions is not required up front.
 4. Initially use String for all fields to avoid unnecessary exceptions which might occur in the parsing. 
 5. Run the Camel Junit test to ensure that the parsing is working correctly in the context of Camel. 
 
